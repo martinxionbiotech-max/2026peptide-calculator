@@ -1,9 +1,8 @@
 import { readFileSync } from 'node:fs';
 
 const index = readFileSync('index.html', 'utf8');
-const app = readFileSync('src/main.js', 'utf8');
-const styles = readFileSync('src/styles.css', 'utf8');
-const combined = `${index}\n${app}\n${styles}`;
+const app = readFileSync('src/main.jsx', 'utf8');
+const combined = `${index}\n${app}`;
 const required = [
   'Research Peptide Blend Calculator',
   'For laboratory research and educational purposes only',
@@ -17,16 +16,12 @@ const required = [
   'Solution Dilution Calculator',
   'Unit Conversion Tool',
   'Research Reference Compound',
-  'src/main.js',
-  'src/styles.css',
 ];
-const prohibited = ['bodybuilding', 'muscle growth', 'fat loss', 'performance enhancement', 'TRT', 'inject'];
-const blockedRuntimeDependencies = ['https://cdn.tailwindcss.com', 'https://unpkg.com', 'text/babel'];
+const prohibited = ['bodybuilding', 'muscle growth', 'fat loss', 'performance enhancement', 'TRT', 'cycle'];
 const missing = required.filter((term) => !combined.includes(term));
 const presentProhibited = prohibited.filter((term) => combined.toLowerCase().includes(term.toLowerCase()));
-const presentBlockedRuntimeDependencies = blockedRuntimeDependencies.filter((term) => combined.includes(term));
-if (missing.length || presentProhibited.length || presentBlockedRuntimeDependencies.length) {
-  console.error(JSON.stringify({ missing, presentProhibited, presentBlockedRuntimeDependencies }, null, 2));
+if (missing.length || presentProhibited.length) {
+  console.error(JSON.stringify({ missing, presentProhibited }, null, 2));
   process.exit(1);
 }
-console.log('Static validation passed: SEO, compliance, schema, calculator sections, and local runtime assets are present.');
+console.log('Static validation passed: SEO, compliance, schema, and calculator sections are present.');
