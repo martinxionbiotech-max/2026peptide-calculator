@@ -1,0 +1,10 @@
+# Research Peptide Blend Calculator
+
+> Browser-based laboratory calculator for research peptide work: concentration, blend ratios, reconstitution volume and dilution, with the arithmetic shown step by step.
+
+## Tool
+- [Calculator](https://2026peptide-calculator.vercel.app/): Peptide concentration and blend calculator for laboratory use.
+
+## Notes
+- For research and laboratory use only — not for human or veterinary administration.
+- All calculations run in the browser; no input is transmitted.
